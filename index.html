@@ -195,6 +195,16 @@
                         accordion.style['max-height'] = accordion.scrollHeight + "px";
                     }
                 })
+                toggler.addEventListener('tap', function () {
+                    this.classList.toggle('active');
+                    let accordion = this.nextElementSibling;
+                    accordion.classList.toggle('active');
+                    if (accordion.style['max-height']) {
+                        accordion.style['max-height'] = null;
+                    } else {
+                        accordion.style['max-height'] = accordion.scrollHeight + "px";
+                    }
+                })
             })
         }
     </script>

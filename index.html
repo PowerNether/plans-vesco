@@ -81,7 +81,7 @@
             <div class="vcplans__body">
                 <p class="vcplans__title vcplans__toggler">
                     Конструктивные решения
-                    <span class="vcplans__arrow"></span>
+                    <span class="vcplans__arrow">Раскрыть</span>
                 </p>
                 <div class="vcplans__accordion">
                     <p class="vcplans__subtitle">Раздел КЖ0:</p>
@@ -186,13 +186,16 @@
         if (togglers !== null) {
             togglers.forEach(toggler => {
                 toggler.addEventListener('click', function () {
-                    this.classList.toggle('active');
                     let accordion = this.nextElementSibling;
                     accordion.classList.toggle('active');
+                    this.classList.toggle('active');
+
                     if (accordion.style['max-height']) {
                         accordion.style['max-height'] = null;
+                        this.querySelector('.vcplans__arrow').innerHTML = 'Раскрыть';
                     } else {
                         accordion.style['max-height'] = accordion.scrollHeight + "px";
+                        this.querySelector('.vcplans__arrow').innerHTML = 'Скрыть';
                     }
                 })
                 toggler.addEventListener('tap', function () {

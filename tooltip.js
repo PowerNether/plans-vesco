@@ -81,7 +81,7 @@ function tooltip () {
           }
         }
 
-        if (window.innerWidth <= 568) {
+        if (window.innerWidth <= 568 && tooltipPos !== 'right-bottom') {
           left = 8
           if ((coords.top + coords.height) < (tooltip.offsetHeight + coords.height + 8)) {
             top = coords.top + coords.height + 8
@@ -102,6 +102,15 @@ function tooltip () {
         }
       })
       el.addEventListener('mousewheel', function () {
+        if (tooltip) {
+          tooltip.classList.add('tooltip-exit');
+          setTimeout(function () {
+            document.querySelectorAll(`.${tooltipID}`).forEach(el => el.remove()); 
+            tooltip = null;
+          }, 150)
+        }
+      }, { passive: false })
+      el.addEventListener('touchmove', function () {
         if (tooltip) {
           tooltip.classList.add('tooltip-exit');
           setTimeout(function () {

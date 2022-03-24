@@ -67,7 +67,39 @@
     font-size: 18px;
     line-height: 24px;
     color: #262626;
+    position: relative;
     margin-bottom: 16px;
+}
+.vcplans__body .vcplans__toggler {
+    margin: -20px -20px -16px;
+    padding: 20px 20px 16px;
+    user-select: none;
+    cursor: pointer;
+}
+.vcplans__body .vcplans__arrow {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    -webkit-mask: url('./images/chevron-down.svg') center / contain no-repeat;
+        mask: url('./images/chevron-down.svg') center / contain no-repeat;
+    background: #8FA4B3;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: transform .35s;
+}
+.vcplans__body .vcplans__title.active .vcplans__arrow {
+    transform: rotate(180deg);
+}
+.vcplans__body .vcplans__accordion {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s, margin-top .35s;
+    margin-top: 0;
+}
+.vcplans__body .vcplans__accordion.active {
+    margin-top: 16px;
 }
 .vcplans__body .vcplans__subtitle {
     font-weight: 400;
@@ -135,6 +167,7 @@
     width: 100%;
     border-radius: 8px;
     border: none;
+    margin-bottom: 0;
 }
 .vcplans__footer .vcplans__link {
     font-weight: 400;

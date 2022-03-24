@@ -79,26 +79,31 @@
             </div>
             <hr class="vcplans__devider">
             <div class="vcplans__body">
-                <p class="vcplans__title">Конструктивные решения</p>
-                <p class="vcplans__subtitle">Раздел КЖ0:</p>
-                <ul class="vcplans__list">
-                    <li class="vcplans__item vcplans__item-info">
-                        <span class="vcplans__info" data-tooltip="Состав зависит от типов фундаментов" data-position="right-bottom"></span>
-                        Конструкции железобетонных фундаментов
-                    </li>
-                </ul>
-                <p class="vcplans__subtitle">Раздел КЖ1:</p>
-                <ul class="vcplans__list">
-                    <li class="vcplans__item">Конструкции железобетонных перекрытий, лестниц, колонн, монолитных поясов, балки и монолитные перемычки</li>
-                </ul>
-                <p class="vcplans__subtitle">Раздел КД:</p>
-                <ul class="vcplans__list">
-                    <li class="vcplans__item">Конструкции деревянные</li>
-                </ul>
-                <p class="vcplans__subtitle">Раздел КМ:</p>
-                <ul class="vcplans__list">
-                    <li class="vcplans__item">Конструкции металлические</li>
-                </ul>
+                <p class="vcplans__title vcplans__toggler">
+                    Конструктивные решения
+                    <span class="vcplans__arrow"></span>
+                </p>
+                <div class="vcplans__accordion">
+                    <p class="vcplans__subtitle">Раздел КЖ0:</p>
+                    <ul class="vcplans__list">
+                        <li class="vcplans__item vcplans__item-info">
+                            <span class="vcplans__info" data-tooltip="Состав зависит от типов фундаментов" data-position="right-bottom"></span>
+                            Конструкции железобетонных фундаментов
+                        </li>
+                    </ul>
+                    <p class="vcplans__subtitle">Раздел КЖ1:</p>
+                    <ul class="vcplans__list">
+                        <li class="vcplans__item">Конструкции железобетонных перекрытий, лестниц, колонн, монолитных поясов, балки и монолитные перемычки</li>
+                    </ul>
+                    <p class="vcplans__subtitle">Раздел КД:</p>
+                    <ul class="vcplans__list">
+                        <li class="vcplans__item">Конструкции деревянные</li>
+                    </ul>
+                    <p class="vcplans__subtitle">Раздел КМ:</p>
+                    <ul class="vcplans__list">
+                        <li class="vcplans__item">Конструкции металлические</li>
+                    </ul>
+                </div>
             </div>
             <hr class="vcplans__devider">
             <div class="vcplans__footer">
@@ -175,5 +180,23 @@
         </div>
     </div>
     <script src="./tooltip.js"></script>
+    <script>
+        let togglers = Array.from(document.querySelectorAll(".vcplans__toggler")) || null;
+
+        if (togglers !== null) {
+            togglers.forEach(toggler => {
+                toggler.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    let accordion = this.nextElementSibling;
+                    accordion.classList.toggle('active');
+                    if (accordion.style['max-height']) {
+                        accordion.style['max-height'] = null;
+                    } else {
+                        accordion.style['max-height'] = accordion.scrollHeight + "px";
+                    }
+                })
+            })
+        }
+    </script>
 </body>
 </html>
